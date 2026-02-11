@@ -10,12 +10,17 @@ interface Props {
   selectedTables: number[];
   totalTime: number;
   onGameEnd: (score: number, total: number, history: QuestionRecord[]) => void;
+  onCancel: (score: number, total: number, history: QuestionRecord[]) => void;
 }
 
 function generateQuestion(tables: number[]): { a: number; b: number } {
-  const a = tables[Math.floor(Math.random() * tables.length)];
-  const b = Math.floor(Math.random() * 12) + 1;
-  return { a, b };
+  const table = tables[Math.floor(Math.random() * tables.length)];
+  const factor = Math.floor(Math.random() * 10) + 1;
+  // Randomize order of factors
+  if (Math.random() < 0.5) {
+    return { a: table, b: factor };
+  }
+  return { a: factor, b: table };
 }
 
 export default function PantallaDeJuego({
@@ -23,6 +28,7 @@ export default function PantallaDeJuego({
   selectedTables,
   totalTime,
   onGameEnd,
+  onCancel,
 }: Props) {
   const [timeLeft, setTimeLeft] = useState(totalTime);
   const [score, setScore] = useState(0);
@@ -118,7 +124,7 @@ export default function PantallaDeJuego({
   // Countdown screen
   if (countdown > 0) {
     return (
-      <div className="flex flex-col items-center justify-center gap-4 min-h-[400px]">
+      <div className="game-countdown flex flex-col items-center justify-center gap-4 min-h-[400px]">
         <p className="text-xl text-slate-500">
           Preparate, {playerName}!
         </p>
@@ -130,12 +136,24 @@ export default function PantallaDeJuego({
   }
 
   return (
-    <div className="animate-fade-in-up flex flex-col items-center gap-4 w-full max-w-lg mx-auto px-4">
+    <div className="game-screen animate-fade-in-up flex flex-col items-center gap-4 w-full max-w-lg mx-auto px-4">
       {/* Header con nombre y score */}
       <div className="flex justify-between items-center w-full">
-        <p className="text-sm font-semibold text-purple-500">
-          Vamos, {playerName}!
-        </p>
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={() => onCancel(score, totalAnswered, historyRef.current)}
+            className="p-1.5 rounded-lg text-slate-300 hover:text-red-400 hover:bg-red-50 transition-colors cursor-pointer"
+            aria-label="Cancelar partida"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
+              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.28 7.22a.75.75 0 00-1.06 1.06L8.94 10l-1.72 1.72a.75.75 0 101.06 1.06L10 11.06l1.72 1.72a.75.75 0 101.06-1.06L11.06 10l1.72-1.72a.75.75 0 00-1.06-1.06L10 8.94 8.28 7.22z" clipRule="evenodd" />
+            </svg>
+          </button>
+          <p className="text-sm font-semibold text-purple-500">
+            {playerName}
+          </p>
+        </div>
         <div className="flex items-center gap-2">
           <span className="text-2xl font-extrabold text-emerald-500">
             {score}
@@ -151,11 +169,11 @@ export default function PantallaDeJuego({
           style={{ width: `${progressPercent}%` }}
         />
       </div>
-      <p className="text-sm text-slate-400 -mt-2">{timeLeft}s</p>
+      <p className="game-timer-text text-sm text-slate-400 -mt-2">{timeLeft}s</p>
 
       {/* Pregunta */}
       <div
-        className={`w-full p-6 rounded-3xl text-center transition-all duration-300 ${
+        className={`game-question w-full p-6 rounded-3xl text-center transition-all duration-300 ${
           feedback === "correct"
             ? "bg-green-50 animate-pulse-green"
             : feedback === "incorrect"
@@ -163,7 +181,7 @@ export default function PantallaDeJuego({
               : "bg-white shadow-xl"
         }`}
       >
-        <div className="text-5xl sm:text-6xl font-extrabold text-slate-700">
+        <div className="game-question-text text-5xl sm:text-6xl font-extrabold text-slate-700">
           {question.a}{" "}
           <span className="text-purple-500">x</span>{" "}
           {question.b}

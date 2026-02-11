@@ -66,3 +66,86 @@ body {
 .animate-confetti {
   animation: confetti 1s ease-out forwards;
 }
+
+/* ── Mobile compact layout ── */
+@media (max-width: 480px) {
+  .app-wrapper {
+    padding-top: 0.25rem !important;
+    padding-bottom: 0.25rem !important;
+    min-height: 100dvh !important;
+  }
+
+  /* Countdown */
+  .game-countdown {
+    min-height: auto !important;
+    gap: 0.5rem !important;
+  }
+
+  /* Game screen: fill viewport, distribute space */
+  .game-screen {
+    gap: 0.35rem !important;
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+    height: 100dvh !important;
+    max-height: 100dvh !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+  }
+
+  /* Time bar */
+  .game-screen .h-4 {
+    height: 0.5rem !important;
+  }
+
+  .game-timer-text {
+    display: none !important;
+  }
+
+  /* Question card */
+  .game-question {
+    padding: 0.5rem 0.75rem !important;
+    border-radius: 1rem !important;
+  }
+
+  .game-question-text {
+    font-size: 2.25rem !important;
+    line-height: 1 !important;
+  }
+
+  .game-question p {
+    margin-top: 0 !important;
+    font-size: 0.8rem !important;
+    height: 1.125rem !important;
+  }
+
+  /* Numpad */
+  .numpad {
+    max-width: 100% !important;
+  }
+
+  .numpad-display {
+    height: 2.25rem !important;
+    margin-bottom: 0.25rem !important;
+    font-size: 1.5rem !important;
+    border-radius: 0.75rem !important;
+    border-width: 1px !important;
+  }
+
+  .numpad-grid {
+    gap: 0.2rem !important;
+  }
+
+  .numpad-grid > button {
+    aspect-ratio: auto !important;
+    padding: 0.4rem 0 !important;
+    font-size: 1.2rem !important;
+    border-radius: 0.6rem !important;
+    border-width: 1px !important;
+    box-shadow: none !important;
+  }
+
+  .numpad-grid > button svg {
+    width: 1.1rem !important;
+    height: 1.1rem !important;
+  }
+}

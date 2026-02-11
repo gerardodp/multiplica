@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import { useGameSettings } from "@/hooks/useGameSettings";
 import PantallaDeInicio from "@/components/PantallaDeInicio";
 import PantallaDeConfiguracion from "@/components/PantallaDeConfiguracion";
@@ -14,6 +14,7 @@ interface GameResult {
   score: number;
   total: number;
   isNewRecord: boolean;
+  cancelled: boolean;
   history: QuestionRecord[];
 }
 
@@ -22,9 +23,15 @@ export default function Home() {
     useGameSettings();
   const [screen, setScreen] = useState<Screen | null>(null);
   const [gameResult, setGameResult] = useState<GameResult | null>(null);
+  const initialScreenSet = useRef(false);
 
-  // Determine initial screen once settings are loaded
-  const currentScreen = screen ?? (isConfigured ? "home" : "config");
+  // Set initial screen exactly once when settings finish loading
+  useEffect(() => {
+    if (loaded && !initialScreenSet.current) {
+      initialScreenSet.current = true;
+      setScreen(isConfigured ? "home" : "config");
+    }
+  }, [loaded, isConfigured]);
 
   const handleToggleTable = useCallback(
     (table: number) => {
@@ -45,10 +52,18 @@ export default function Home() {
     (score: number, total: number, history: QuestionRecord[]) => {
       const isNewRecord = score > settings.highScore;
       updateHighScore(score);
-      setGameResult({ score, total, isNewRecord, history });
+      setGameResult({ score, total, isNewRecord, cancelled: false, history });
       setScreen("results");
     },
     [settings.highScore, updateHighScore]
+  );
+
+  const handleCancel = useCallback(
+    (score: number, total: number, history: QuestionRecord[]) => {
+      setGameResult({ score, total, isNewRecord: false, cancelled: true, history });
+      setScreen("results");
+    },
+    []
   );
 
   const handlePlayAgain = useCallback(() => {
@@ -69,7 +84,7 @@ export default function Home() {
     setScreen("config");
   }, [resetSettings]);
 
-  if (!loaded) {
+  if (!loaded || !screen) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-2xl font-bold text-purple-400 animate-pulse">
@@ -80,8 +95,8 @@ export default function Home() {
   }
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center py-8">
-      {currentScreen === "home" && (
+    <div className="app-wrapper relative min-h-screen flex items-center justify-center py-8">
+      {screen === "home" && (
         <PantallaDeInicio
           playerName={settings.playerName}
           selectedTables={settings.selectedTables}
@@ -94,7 +109,7 @@ export default function Home() {
         />
       )}
 
-      {currentScreen === "config" && (
+      {screen === "config" && (
         <PantallaDeConfiguracion
           playerName={settings.playerName}
           selectedTables={settings.selectedTables}
@@ -109,22 +124,24 @@ export default function Home() {
         />
       )}
 
-      {currentScreen === "playing" && (
+      {screen === "playing" && (
         <PantallaDeJuego
           playerName={settings.playerName}
           selectedTables={settings.selectedTables}
           totalTime={settings.selectedTime}
           onGameEnd={handleGameEnd}
+          onCancel={handleCancel}
         />
       )}
 
-      {currentScreen === "results" && gameResult && (
+      {screen === "results" && gameResult && (
         <PantallaDeResultados
           playerName={settings.playerName}
           score={gameResult.score}
           totalAnswered={gameResult.total}
           highScore={Math.max(settings.highScore, gameResult.score)}
           isNewRecord={gameResult.isNewRecord}
+          cancelled={gameResult.cancelled}
           history={gameResult.history}
           onPlayAgain={handlePlayAgain}
         />

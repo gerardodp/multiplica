@@ -10,6 +10,7 @@ interface Props {
   totalAnswered: number;
   highScore: number;
   isNewRecord: boolean;
+  cancelled: boolean;
   history: QuestionRecord[];
   onPlayAgain: () => void;
 }
@@ -20,6 +21,7 @@ export default function PantallaDeResultados({
   totalAnswered,
   highScore,
   isNewRecord,
+  cancelled,
   history,
   onPlayAgain,
 }: Props) {
@@ -67,13 +69,22 @@ export default function PantallaDeResultados({
         </div>
       )}
 
+      {/* Cancelled badge */}
+      {cancelled && (
+        <div className="w-full rounded-2xl bg-orange-50 border-2 border-orange-200 p-3 text-center">
+          <p className="text-sm font-bold text-orange-500">
+            Partida cancelada - no cuenta para record
+          </p>
+        </div>
+      )}
+
       {/* Header */}
       <div className="text-center">
         <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-700">
-          {getMessage()}
+          {cancelled ? "Partida parcial" : getMessage()}
         </h2>
         <p className="mt-1 text-lg text-slate-400">
-          Buen trabajo, {playerName}!
+          {cancelled ? `Animo, ${playerName}!` : `Buen trabajo, ${playerName}!`}
         </p>
       </div>
 
@@ -101,26 +112,28 @@ export default function PantallaDeResultados({
         </div>
       </div>
 
-      {/* High score */}
-      <div
-        className={`w-full rounded-2xl p-4 text-center ${
-          isNewRecord
-            ? "bg-gradient-to-r from-yellow-100 to-amber-100 border-2 border-amber-300"
-            : "bg-white border-2 border-slate-100"
-        }`}
-      >
-        {isNewRecord ? (
-          <p className="text-lg font-bold text-amber-600">
-            Nuevo record! {highScore} puntos
-          </p>
-        ) : (
-          <p className="text-sm text-slate-400">
-            Tu record:{" "}
-            <span className="font-bold text-slate-600">{highScore}</span>{" "}
-            puntos
-          </p>
-        )}
-      </div>
+      {/* High score (hidden on cancelled) */}
+      {!cancelled && (
+        <div
+          className={`w-full rounded-2xl p-4 text-center ${
+            isNewRecord
+              ? "bg-gradient-to-r from-yellow-100 to-amber-100 border-2 border-amber-300"
+              : "bg-white border-2 border-slate-100"
+          }`}
+        >
+          {isNewRecord ? (
+            <p className="text-lg font-bold text-amber-600">
+              Nuevo record! {highScore} puntos
+            </p>
+          ) : (
+            <p className="text-sm text-slate-400">
+              Tu record:{" "}
+              <span className="font-bold text-slate-600">{highScore}</span>{" "}
+              puntos
+            </p>
+          )}
+        </div>
+      )}
 
       {/* Mistake review */}
       {mistakes.length > 0 && (

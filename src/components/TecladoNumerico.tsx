@@ -68,14 +68,14 @@ export default function TecladoNumerico({
   );
 
   return (
-    <div className="w-full max-w-xs mx-auto">
+    <div className="numpad w-full max-w-xs mx-auto">
       {/* Display */}
-      <div className="mb-3 h-16 flex items-center justify-center rounded-2xl bg-white border-2 border-purple-200 text-4xl font-extrabold text-slate-700">
+      <div className="numpad-display mb-3 h-16 flex items-center justify-center rounded-2xl bg-white border-2 border-purple-200 text-4xl font-extrabold text-slate-700">
         {value || <span className="text-slate-300">?</span>}
       </div>
 
       {/* Numpad grid */}
-      <div className="grid grid-cols-3 gap-2">
+      <div className="numpad-grid grid grid-cols-3 gap-2">
         {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((d) => digitButton(d))}
 
         {/* Delete */}
