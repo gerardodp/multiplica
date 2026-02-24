@@ -67,6 +67,27 @@ body {
   animation: confetti 1s ease-out forwards;
 }
 
+@keyframes letter-reveal {
+  0% { transform: scale(0.5); opacity: 0; }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes heart-break {
+  0% { transform: scale(1); }
+  25% { transform: scale(1.3) rotate(-10deg); }
+  50% { transform: scale(0.8) rotate(10deg); }
+  100% { transform: scale(0.75); opacity: 0.3; }
+}
+
+.animate-letter-reveal {
+  animation: letter-reveal 0.3s ease-out;
+}
+
+.animate-heart-break {
+  animation: heart-break 0.4s ease-out;
+}
+
 /* ── Mobile compact layout ── */
 @media (max-width: 480px) {
   .app-wrapper {

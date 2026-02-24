@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Multiplica Rápido - Practica las tablas de multiplicar",
+  title: "Aprendemos! - Mini-juegos educativos",
   description:
-    "Aplicacion divertida para que los ninos practiquen las tablas de multiplicar",
+    "Plataforma de mini-juegos educativos: multiplicación, dictée en francés y más",
 };
 
 export default function RootLayout({
