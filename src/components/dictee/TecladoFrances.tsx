@@ -81,7 +81,7 @@ export default function TecladoFrances({ onGuess, disabled, lastWrong, lastGuess
 
   const keyClass = (letter: string) => {
     const base =
-      "min-w-[2rem] sm:min-w-[2.4rem] h-11 sm:h-12 rounded-lg font-bold text-sm sm:text-base transition-all select-none touch-manipulation";
+      "min-w-[2rem] sm:min-w-[2.4rem] md:min-w-[3.2rem] h-11 sm:h-12 md:h-14 rounded-lg font-bold text-sm sm:text-base md:text-lg transition-all select-none touch-manipulation";
     if (lastWrong === letter) {
       if (lastGuessType === "near-miss") {
         return `${base} bg-amber-100 text-amber-600 border-2 border-amber-300 animate-shake`;
@@ -92,9 +92,9 @@ export default function TecladoFrances({ onGuess, disabled, lastWrong, lastGuess
   };
 
   return (
-    <div className="relative flex flex-col items-center gap-1.5">
+    <div className="relative flex flex-col items-center gap-1.5 md:gap-2.5">
       {ROWS.map((row, ri) => (
-        <div key={ri} className="flex gap-1 sm:gap-1.5 justify-center">
+        <div key={ri} className="flex gap-1 sm:gap-1.5 md:gap-2 justify-center">
           {row.map((letter) => (
             <button
               key={letter}

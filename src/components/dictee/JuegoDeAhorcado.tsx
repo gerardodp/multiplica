@@ -138,7 +138,7 @@ export default function JuegoDeAhorcado({ lesson, soundEnabled, level, proMode, 
   const wasCompleted = wordComplete && results[results.length - 1]?.completed;
 
   return (
-    <div className="animate-fade-in-up flex flex-col items-center gap-5 w-full max-w-md mx-auto px-4">
+    <div className="animate-fade-in-up flex flex-col items-center gap-5 md:gap-9 w-full max-w-md mx-auto px-4">
       {/* Top bar */}
       <div className="w-full flex items-center justify-between">
         <button

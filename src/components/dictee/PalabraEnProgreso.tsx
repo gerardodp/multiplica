@@ -56,11 +56,11 @@ export default function PalabraEnProgreso({ word, filledLetters, cursorCharIndex
 
   return (
     <div className="flex flex-col items-center gap-3">
-      <div className="flex items-center gap-3 flex-wrap justify-center">
+      <div className="flex items-center gap-3 flex-wrap md:flex-nowrap justify-center">
         {word.article && (
           <span className="text-2xl font-bold text-blue-400">{word.article}</span>
         )}
-        <div className="flex gap-1.5 flex-wrap justify-center">
+        <div className="flex gap-1.5 flex-wrap md:flex-nowrap justify-center">
           {letters.map((ch, i) => {
             const isLetter = /[a-zA-ZÀ-ÿ]/.test(ch);
             const isFilled = i in filledLetters;
