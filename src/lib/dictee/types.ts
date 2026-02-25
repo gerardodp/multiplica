@@ -26,9 +26,9 @@ export interface WrongGuess {
 export type DicteeLevel = 1 | 2 | 3;
 
 export const LEVEL_CONFIGS: Record<DicteeLevel, { label: string; timePerWord: number; timePerQuiz: number }> = {
-  1: { label: "Débutant", timePerWord: 40, timePerQuiz: 15 },
-  2: { label: "Intermédiaire", timePerWord: 24, timePerQuiz: 10 },
-  3: { label: "Expert", timePerWord: 16, timePerQuiz: 7 },
+  1: { label: "Débutant", timePerWord: 80, timePerQuiz: 30 },
+  2: { label: "Intermédiaire", timePerWord: 48, timePerQuiz: 20 },
+  3: { label: "Expert", timePerWord: 32, timePerQuiz: 14 },
 };
 
 export interface DicteeWordResult {
