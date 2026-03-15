@@ -8,6 +8,8 @@ import type {
 } from "@/lib/conjugaison/types";
 import { calculateQuestionPoints } from "@/lib/conjugaison/scoring";
 
+export type GamePhase = "conjugation" | "translation";
+
 export function useConjugaisonGame(
   questions: ConjugaisonQuestion[],
   difficulty: ConjugaisonDifficulty,
@@ -16,6 +18,7 @@ export function useConjugaisonGame(
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [answered, setAnswered] = useState(false);
+  const [phase, setPhase] = useState<GamePhase>("conjugation");
   const [results, setResults] = useState<ConjugaisonQuestionResult[]>([]);
   const [streak, setStreak] = useState(0);
   const [bestStreak, setBestStreak] = useState(0);
@@ -82,6 +85,28 @@ export function useConjugaisonGame(
     setStreak(0);
   }, [answered, currentQuestion, timePerQuestion]);
 
+  /** Move from conjugation feedback to translation quiz */
+  const goToTranslation = useCallback(() => {
+    setPhase("translation");
+  }, []);
+
+  /** Record translation answer and stay on screen until user clicks next */
+  const answerTranslation = useCallback(
+    (correct: boolean) => {
+      setResults((prev) => {
+        const updated = [...prev];
+        if (updated.length > 0) {
+          updated[updated.length - 1] = {
+            ...updated[updated.length - 1],
+            translationCorrect: correct,
+          };
+        }
+        return updated;
+      });
+    },
+    []
+  );
+
   const advanceToNext = useCallback(() => {
     const nextIndex = currentIndex + 1;
     if (nextIndex >= questions.length) {
@@ -91,6 +116,7 @@ export function useConjugaisonGame(
     setCurrentIndex(nextIndex);
     setSelectedAnswer(null);
     setAnswered(false);
+    setPhase("conjugation");
     setLastPoints(0);
     questionStartTime.current = Date.now();
   }, [currentIndex, questions.length]);
@@ -101,6 +127,7 @@ export function useConjugaisonGame(
     totalQuestions: questions.length,
     selectedAnswer,
     answered,
+    phase,
     streak,
     bestStreak,
     totalPoints,
@@ -109,6 +136,8 @@ export function useConjugaisonGame(
     results,
     selectAnswer,
     handleTimeUp,
+    goToTranslation,
+    answerTranslation,
     advanceToNext,
   };
 }

@@ -15,6 +15,14 @@ export const ALL_VERBS: ConjugaisonVerb[] = [
       "ils/elles": "chanteront",
     },
     translation: "cantar",
+    futureTranslations: {
+      je: "yo cantaré",
+      tu: "tú cantarás",
+      "il/elle/on": "él/ella cantará",
+      nous: "nosotros cantaremos",
+      vous: "vosotros cantaréis",
+      "ils/elles": "ellos/ellas cantarán",
+    },
   },
   {
     infinitive: "jouer",
@@ -29,6 +37,14 @@ export const ALL_VERBS: ConjugaisonVerb[] = [
       "ils/elles": "joueront",
     },
     translation: "jugar",
+    futureTranslations: {
+      je: "yo jugaré",
+      tu: "tú jugarás",
+      "il/elle/on": "él/ella jugará",
+      nous: "nosotros jugaremos",
+      vous: "vosotros jugaréis",
+      "ils/elles": "ellos/ellas jugarán",
+    },
   },
   {
     infinitive: "marcher",
@@ -43,6 +59,14 @@ export const ALL_VERBS: ConjugaisonVerb[] = [
       "ils/elles": "marcheront",
     },
     translation: "caminar",
+    futureTranslations: {
+      je: "yo caminaré",
+      tu: "tú caminarás",
+      "il/elle/on": "él/ella caminará",
+      nous: "nosotros caminaremos",
+      vous: "vosotros caminaréis",
+      "ils/elles": "ellos/ellas caminarán",
+    },
   },
   {
     infinitive: "briller",
@@ -57,6 +81,14 @@ export const ALL_VERBS: ConjugaisonVerb[] = [
       "ils/elles": "brilleront",
     },
     translation: "brillar",
+    futureTranslations: {
+      je: "yo brillaré",
+      tu: "tú brillarás",
+      "il/elle/on": "él/ella brillará",
+      nous: "nosotros brillaremos",
+      vous: "vosotros brillaréis",
+      "ils/elles": "ellos/ellas brillarán",
+    },
   },
   {
     infinitive: "rentrer",
@@ -71,6 +103,14 @@ export const ALL_VERBS: ConjugaisonVerb[] = [
       "ils/elles": "rentreront",
     },
     translation: "volver",
+    futureTranslations: {
+      je: "yo volveré",
+      tu: "tú volverás",
+      "il/elle/on": "él/ella volverá",
+      nous: "nosotros volveremos",
+      vous: "vosotros volveréis",
+      "ils/elles": "ellos/ellas volverán",
+    },
   },
 
   // --- 2ème groupe (-ir, conjugación en -iss-) ---
@@ -87,6 +127,14 @@ export const ALL_VERBS: ConjugaisonVerb[] = [
       "ils/elles": "finiront",
     },
     translation: "terminar",
+    futureTranslations: {
+      je: "yo terminaré",
+      tu: "tú terminarás",
+      "il/elle/on": "él/ella terminará",
+      nous: "nosotros terminaremos",
+      vous: "vosotros terminaréis",
+      "ils/elles": "ellos/ellas terminarán",
+    },
   },
   {
     infinitive: "choisir",
@@ -101,6 +149,14 @@ export const ALL_VERBS: ConjugaisonVerb[] = [
       "ils/elles": "choisiront",
     },
     translation: "elegir",
+    futureTranslations: {
+      je: "yo elegiré",
+      tu: "tú elegirás",
+      "il/elle/on": "él/ella elegirá",
+      nous: "nosotros elegiremos",
+      vous: "vosotros elegiréis",
+      "ils/elles": "ellos/ellas elegirán",
+    },
   },
   {
     infinitive: "réussir",
@@ -115,6 +171,14 @@ export const ALL_VERBS: ConjugaisonVerb[] = [
       "ils/elles": "réussiront",
     },
     translation: "lograr",
+    futureTranslations: {
+      je: "yo lograré",
+      tu: "tú lograrás",
+      "il/elle/on": "él/ella logrará",
+      nous: "nosotros lograremos",
+      vous: "vosotros lograréis",
+      "ils/elles": "ellos/ellas lograrán",
+    },
   },
   {
     infinitive: "remplir",
@@ -129,6 +193,14 @@ export const ALL_VERBS: ConjugaisonVerb[] = [
       "ils/elles": "rempliront",
     },
     translation: "llenar",
+    futureTranslations: {
+      je: "yo llenaré",
+      tu: "tú llenarás",
+      "il/elle/on": "él/ella llenará",
+      nous: "nosotros llenaremos",
+      vous: "vosotros llenaréis",
+      "ils/elles": "ellos/ellas llenarán",
+    },
   },
 
   // --- 3ème groupe (partir) ---
@@ -145,6 +217,14 @@ export const ALL_VERBS: ConjugaisonVerb[] = [
       "ils/elles": "partiront",
     },
     translation: "salir / irse",
+    futureTranslations: {
+      je: "yo me iré",
+      tu: "tú te irás",
+      "il/elle/on": "él/ella se irá",
+      nous: "nosotros nos iremos",
+      vous: "vosotros os iréis",
+      "ils/elles": "ellos/ellas se irán",
+    },
   },
 
   // --- Irregulares ---
@@ -161,6 +241,14 @@ export const ALL_VERBS: ConjugaisonVerb[] = [
       "ils/elles": "iront",
     },
     translation: "ir",
+    futureTranslations: {
+      je: "yo iré",
+      tu: "tú irás",
+      "il/elle/on": "él/ella irá",
+      nous: "nosotros iremos",
+      vous: "vosotros iréis",
+      "ils/elles": "ellos/ellas irán",
+    },
   },
   {
     infinitive: "faire",
@@ -175,6 +263,14 @@ export const ALL_VERBS: ConjugaisonVerb[] = [
       "ils/elles": "feront",
     },
     translation: "hacer",
+    futureTranslations: {
+      je: "yo haré",
+      tu: "tú harás",
+      "il/elle/on": "él/ella hará",
+      nous: "nosotros haremos",
+      vous: "vosotros haréis",
+      "ils/elles": "ellos/ellas harán",
+    },
   },
   {
     infinitive: "venir",
@@ -189,6 +285,14 @@ export const ALL_VERBS: ConjugaisonVerb[] = [
       "ils/elles": "viendront",
     },
     translation: "venir",
+    futureTranslations: {
+      je: "yo vendré",
+      tu: "tú vendrás",
+      "il/elle/on": "él/ella vendrá",
+      nous: "nosotros vendremos",
+      vous: "vosotros vendréis",
+      "ils/elles": "ellos/ellas vendrán",
+    },
   },
   {
     infinitive: "voir",
@@ -203,6 +307,14 @@ export const ALL_VERBS: ConjugaisonVerb[] = [
       "ils/elles": "verront",
     },
     translation: "ver",
+    futureTranslations: {
+      je: "yo veré",
+      tu: "tú verás",
+      "il/elle/on": "él/ella verá",
+      nous: "nosotros veremos",
+      vous: "vosotros veréis",
+      "ils/elles": "ellos/ellas verán",
+    },
   },
   {
     infinitive: "avoir",
@@ -217,6 +329,14 @@ export const ALL_VERBS: ConjugaisonVerb[] = [
       "ils/elles": "auront",
     },
     translation: "tener",
+    futureTranslations: {
+      je: "yo tendré",
+      tu: "tú tendrás",
+      "il/elle/on": "él/ella tendrá",
+      nous: "nosotros tendremos",
+      vous: "vosotros tendréis",
+      "ils/elles": "ellos/ellas tendrán",
+    },
   },
   {
     infinitive: "être",
@@ -231,6 +351,14 @@ export const ALL_VERBS: ConjugaisonVerb[] = [
       "ils/elles": "seront",
     },
     translation: "ser / estar",
+    futureTranslations: {
+      je: "yo seré",
+      tu: "tú serás",
+      "il/elle/on": "él/ella será",
+      nous: "nosotros seremos",
+      vous: "vosotros seréis",
+      "ils/elles": "ellos/ellas serán",
+    },
   },
 ];
 

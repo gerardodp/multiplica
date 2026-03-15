@@ -8,6 +8,7 @@ export interface ConjugaisonVerb {
   futureRoot: string;
   conjugations: Record<Pronoun, string>;
   translation: string;
+  futureTranslations: Record<Pronoun, string>;
 }
 
 export interface ConjugaisonQuestion {
@@ -23,6 +24,7 @@ export interface ConjugaisonQuestionResult {
   correct: boolean;
   timeUsed: number;
   points: number;
+  translationCorrect?: boolean;
 }
 
 export type ConjugaisonDifficulty = 1 | 2 | 3;

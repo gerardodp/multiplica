@@ -219,3 +219,34 @@ export function generateQuestions(
 
   return questions;
 }
+
+/**
+ * Generate 4 translation options for the translation quiz.
+ * Correct: the verb's futureTranslation for the given pronoun.
+ * Distractors: futureTranslations from OTHER verbs for the SAME pronoun.
+ * e.g. for "tu iras" → correct "tú irás", distractors "tú verás", "tú harás", "tú cantarás"
+ */
+export function generateTranslationOptions(
+  verb: ConjugaisonVerb,
+  pronoun: Pronoun,
+  allVerbs: ConjugaisonVerb[]
+): { correct: string; options: string[] } {
+  const correct = verb.futureTranslations[pronoun];
+
+  const otherTranslations: string[] = [];
+  const others = shuffle(
+    allVerbs.filter((v) => v.infinitive !== verb.infinitive)
+  );
+  for (const other of others) {
+    const t = other.futureTranslations[pronoun];
+    if (t !== correct && !otherTranslations.includes(t)) {
+      otherTranslations.push(t);
+    }
+    if (otherTranslations.length >= 3) break;
+  }
+
+  return {
+    correct,
+    options: shuffle([correct, ...otherTranslations.slice(0, 3)]),
+  };
+}

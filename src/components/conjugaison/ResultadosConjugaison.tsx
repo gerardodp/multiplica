@@ -181,6 +181,12 @@ export default function ResultadosConjugaison({
                       (sin respuesta)
                     </span>
                   )}
+                  {r.translationCorrect === true && (
+                    <span className="text-xs text-green-500 ml-1">trad. ✓</span>
+                  )}
+                  {r.translationCorrect === false && (
+                    <span className="text-xs text-red-400 ml-1">trad. ✗</span>
+                  )}
                 </div>
                 <span className={`text-sm font-extrabold ${pointColor}`}>
                   {r.points} pts
