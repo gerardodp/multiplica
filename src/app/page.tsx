@@ -169,6 +169,13 @@ export default function Home() {
             description="Practica la ortografía en francés con un ahorcado por audio"
             gradient="bg-gradient-to-br from-blue-500 to-cyan-500"
           />
+          <GameCard
+            href="/conjugaison"
+            emoji="📝"
+            title="Conjugaison"
+            description="Practica la conjugación del futuro en francés"
+            gradient="bg-gradient-to-br from-emerald-500 to-teal-500"
+          />
         </div>
       </div>
     </div>
