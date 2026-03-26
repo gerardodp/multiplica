@@ -176,6 +176,13 @@ export default function Home() {
             description="Practica la conjugación del futuro en francés"
             gradient="bg-gradient-to-br from-emerald-500 to-teal-500"
           />
+          <GameCard
+            href="/poesie"
+            emoji="📜"
+            title="Poésie"
+            description="Aprende poemas en francés ordenando los versos"
+            gradient="bg-gradient-to-br from-rose-500 to-amber-500"
+          />
         </div>
       </div>
     </div>
